@@ -28,4 +28,11 @@ jobs:
           aws cloudformation deploy \
             --template-file template.yml \
             --stack-name ServerlessAPIStack \
-            --capabilities CAPABILITY_NAMED_IAM
+            --capabilities CAPABILITY_NAMED_IAM CAPABILITY_IAM
+
+      # Optional Step 4: Get CloudFormation Stack Outputs
+      - name: Display CloudFormation Stack Outputs
+        run: |
+          aws cloudformation describe-stacks \
+            --stack-name ServerlessAPIStack \
+            --query "Stacks[0].Outputs"
